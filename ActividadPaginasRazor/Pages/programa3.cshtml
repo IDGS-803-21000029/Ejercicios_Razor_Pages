@@ -1,0 +1,48 @@
+﻿@page
+@model ActividadPaginasRazor.Pages.programa3Model
+@{
+}
+
+<h3>Programa 3</h3>
+<h1>Resolución de expresion</h1>
+
+<form method="post" class="mt-4">
+    <div class="form-group">
+        <label for="va">Valor de a:</label>
+        <p><input type="number" class="form-control" placeholder="a" required asp-for="aStr" /></p>
+    </div>
+    <div class="form-group">
+        <label for="vb">Valor de b:</label>
+        <p><input type="number" class="form-control" placeholder="b" required asp-for="bStr" /></p>
+    </div>
+    <div class="form-group">
+        <label for="vx">Valor de x:</label>
+        <p><input type="number" class="form-control" placeholder="x" required asp-for="xStr" /></p>
+    </div>
+    <div class="form-group">
+        <label for="vy">Valor de y:</label>
+        <p><input type="number" class="form-control" placeholder="y" required asp-for="yStr" /></p>
+    </div>
+    <div class="form-group">
+        <label for="vn">Valor de n:</label>
+        <p><input type="number" class="form-control" placeholder="n" required asp-for="nStr" /></p>
+    </div>
+    
+    <br />
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+
+<div class="mt-4">
+    <h2>Resultado:</h2>
+    @if (Model.res1 == Model.res2)
+    {
+        <h1 class="text-success"><strong>El resultado es @Model.res1</strong></h1>
+    }
+    else
+    {
+        <h1 class="text-danger"><strong>El resultado es NO correcto</strong></h1>
+        <p>Resultado1 = @Model.res1</p>
+        <p>Resultado2 = @Model.res2</p>
+    }
+</div>
+ 

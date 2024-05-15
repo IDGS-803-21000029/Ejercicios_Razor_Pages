@@ -1,0 +1,36 @@
+﻿@page
+@model ActividadPaginasRazor.Pages.programa4Model
+@{
+}
+
+
+<h3>Programa 4</h3>
+<h1>Números Aleatorios Calculados</h1>
+
+<form method="post">
+    <button type="submit" class="btn btn-success">Generar</button>
+</form>
+
+<br />
+
+@if (Model.Numeros != null && Model.Numeros.Length > 0)
+{
+    <h5>Números Aleatorios</h5>
+    <p>@string.Join(", ", Model.Numeros)</p>
+
+    <h5>Suma</h5>
+    <p>@Model.Sum</p>
+
+    <h5>Media Aritmética</h5>
+    <p>@Model.Prom</p>
+
+    <h5>Moda</h5>
+    <p>@string.Join(", ", Model.Moda)</p>
+
+    <h5>Mediana</h5>
+    <p>@Model.Median</p>
+}
+else
+{
+    <p>No se han generado números aleatorios aún.</p>
+}

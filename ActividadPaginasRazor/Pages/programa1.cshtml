@@ -1,0 +1,64 @@
+﻿@page
+@model ActividadPaginasRazor.Pages.programa1Model
+@{
+}
+
+<h3>Programa 1</h3>
+<h1>Calculo de Masa Corporal (IMC)</h1>
+
+<form method="post">
+    <p>Peso (kg): 
+        <input type="text" asp-for="pesoStr" />
+    </p>
+    <p>Altura (m): 
+        <input type="text" asp-for="alturaStr" />
+    </p>
+    <br/>
+    <p><input type="submit" class="btn-info" name="calcular" value="Calcular IMC" /></p>
+    <br/>
+    @{
+        string mensaje = "";
+        string clase = "";
+        switch (Model.imc)
+        {
+            case double n when n < 18 && n >= 1:
+                mensaje = "Peso Bajo";
+                clase = "text-success";
+                break;
+            case double n when n >= 18 && n < 25:
+                mensaje = "Peso Normal";
+                clase = "text-info";
+                break;
+            case double n when n >= 25 && n < 27:
+                mensaje = "Sobrepeso";
+                clase = "text-warning";
+                break;
+            case double n when n >= 27 && n < 30:
+                mensaje = "Obesidad Grado I";
+                clase = "text-warning";
+                break;
+            case double n when n >= 30 && n < 40:
+                mensaje = "Obesidad Grado II";
+                clase = "text-danger";
+                break;
+            case double n when n >= 40:
+                mensaje = "Obesidad Grado III";
+                clase = "text-danger";
+                break;
+            default:
+                break;
+        }
+    }
+
+    @if (!string.IsNullOrEmpty(mensaje))
+    {
+        <div>
+            <h5>IMC: @Model.imc</h5>
+            <h4 class="@clase"><strong>@mensaje</strong></h4>
+        </div>
+    }
+    else if (Model.imc == 0)
+    {
+        <div></div>
+    }
+</form>
